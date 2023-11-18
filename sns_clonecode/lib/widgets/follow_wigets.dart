@@ -8,8 +8,16 @@ class follow_list extends StatefulWidget {
 }
 
 class _follow_listState extends State<follow_list> {
-  List<bool> switchValues = List.generate(20, (index) => false);
-
+  // List<bool> switchValues = List.generate(20, (index) => false);
+  List<String> switchValues = [
+    '아스키',
+    '유스호스텔',
+    '청춘공방',
+    '스날',
+    '한아울',
+    '칼파',
+    '매치포인트'
+  ];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size.height * 1 / 9;
@@ -33,7 +41,7 @@ class _follow_listState extends State<follow_list> {
                   children: List.generate(switchValues.length, (index) {
                     return InkWell(
                       onTap: () {
-                        // 클릭된 동아리에 대한 작업 수행
+                        // Perform actions when a club is clicked
                         print('$index 동아리 클릭됨');
                       },
                       child: Row(
@@ -42,24 +50,15 @@ class _follow_listState extends State<follow_list> {
                           CircleAvatar(
                             radius: 20,
                             backgroundImage: AssetImage(
-                              'assets/images/app_logo.png', // 이미지의 경로를 여기에 입력
+                              'assets/images/app_logo.png', // Image path here
                             ),
                           ),
                           SizedBox(width: 10),
                           Text(
-                            '동아리 $index',
+                            switchValues[index], // Use club name from the list
                             style: TextStyle(fontSize: 30),
                           ),
                           SizedBox(height: 50),
-                          // Switch(
-                          //   value: switchValues[index],
-                          //   onChanged: (value) {
-                          //     setState(() {
-                          //       print(value);
-                          //       switchValues[index] = value;
-                          //     });
-                          //   },
-                          // ),
                         ],
                       ),
                     );
@@ -67,6 +66,7 @@ class _follow_listState extends State<follow_list> {
                 ),
               ),
             ),
+            //
           ],
         ),
       ),
