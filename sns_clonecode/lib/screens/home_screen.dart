@@ -40,8 +40,20 @@ class _home_screenState extends State<home_screen> {
                     flex: 15,
                     child: PageView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 10,
+                      // itemCount: imagePaths
+                      //     .length, // Set itemCount to the number of images
+                      itemCount: 5,
                       itemBuilder: (context, index) {
+                        // Replace these paths with the actual paths to your images
+                        List<String> imagePaths = [
+                          'assets/images/asc.jpg',
+                          'assets/images/youth.jpg',
+                          'assets/images/app_logo.png',
+                          'assets/images/asc.jpg',
+                          'assets/images/asc.jpg',
+                          // Add paths for the remaining images
+                        ];
+
                         return GestureDetector(
                           onTap: () {
                             // Handle individual item tap events here
@@ -54,9 +66,15 @@ class _home_screenState extends State<home_screen> {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
-                              child: Text(
-                                '공지 $index',
-                                style: TextStyle(color: Colors.white),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  imagePaths[
+                                      index], // Use the image path for the current index
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                ),
                               ),
                             ),
                           ),
@@ -64,6 +82,8 @@ class _home_screenState extends State<home_screen> {
                       },
                     ),
                   ),
+
+                  //
                   Expanded(
                     flex: 12,
                     child: Container(
@@ -79,6 +99,17 @@ class _home_screenState extends State<home_screen> {
                         children: List.generate(
                           8,
                           (index) {
+                            List<String> buttonTexts = [
+                              "공연예술",
+                              "사회활동",
+                              "생활체육",
+                              "예술전시",
+                              "음악연주",
+                              "종교활동",
+                              "학술연구",
+                              "더보기",
+                            ];
+
                             return GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -91,14 +122,13 @@ class _home_screenState extends State<home_screen> {
                               child: Container(
                                 margin: EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  //
+                                  color: Color.fromARGB(255, 181, 190, 234),
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: Center(
                                   child: Text(
-                                    '버튼 $index',
-                                    style: TextStyle(color: Colors.white),
+                                    buttonTexts[index],
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ),

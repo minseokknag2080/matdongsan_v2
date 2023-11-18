@@ -17,7 +17,7 @@ class _follow_listState extends State<follow_list> {
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(44, 106, 245, 1.0),
         title: Text(
-          '알람',
+          '공연예술',
           style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white), //전체아이콘색깔
