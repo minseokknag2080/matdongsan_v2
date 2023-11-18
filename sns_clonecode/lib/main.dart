@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(),
+        //theme: ThemeData.light(),
         home: SplashScreen(),
       ),
     );

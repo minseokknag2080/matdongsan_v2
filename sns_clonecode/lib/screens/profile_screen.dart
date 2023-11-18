@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Text(
         label,
         style: TextStyle(
-            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.grey),
+            fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
       )
     ]);
   }
@@ -83,7 +83,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       },
       child: Text(text),
       style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromRGBO(44, 106, 245, 1.0),
+          foregroundColor: Colors.black,
           side: const BorderSide(color: Colors.grey),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
@@ -106,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(9),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             Row(

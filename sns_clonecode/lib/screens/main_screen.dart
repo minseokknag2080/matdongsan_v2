@@ -10,7 +10,6 @@ import 'package:sns_clonecode/screens/feed_upload_screen.dart';
 import 'package:sns_clonecode/screens/home_screen.dart';
 import 'package:sns_clonecode/screens/like_screen.dart';
 import 'package:sns_clonecode/screens/profile_screen.dart';
-import 'package:sns_clonecode/screens/profile_select_page.dart';
 import 'package:sns_clonecode/utils/logger.dart';
 import 'package:sns_clonecode/widgets/error_dialog_widget.dart';
 

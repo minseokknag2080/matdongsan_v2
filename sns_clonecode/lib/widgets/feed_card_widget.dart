@@ -151,61 +151,72 @@ class _FeedCardWidgetState extends State<FeedCardWidget> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Row(
-            children: [
-              AvatarWidget(userModel: userModel),
-              SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Text(
-                  userModel.name,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              height: 1, // Adjust the height of the line as needed
+              color: Colors.grey, // Adjust the color of the line as needed
+              margin: EdgeInsets.symmetric(horizontal: 5),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                AvatarWidget(userModel: userModel),
+                SizedBox(
+                  width: 8,
                 ),
-              ),
-              if (currentUserId == feedModel.uid)
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Dialog(
-                            child: TextButton(
-                              child: Text(
-                                '삭제',
-                                style: TextStyle(color: Colors.red),
-                              ),
-                              onPressed: () async {
-                                //삭제로직
-                                try {
-                                  await context
-                                      .read<FeedProvider>()
-                                      .deleteFeed(feedModel: feedModel);
+                Expanded(
+                  child: Text(
+                    userModel.name,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                if (currentUserId == feedModel.uid)
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              child: TextButton(
+                                child: Text(
+                                  '삭제',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                onPressed: () async {
+                                  //삭제로직
+                                  try {
+                                    await context
+                                        .read<FeedProvider>()
+                                        .deleteFeed(feedModel: feedModel);
 
-                                  context
-                                      .read<LikeProvider>()
-                                      .deleteFeed(feedId: feedModel.feedId);
-
-                                  if (widget.isProfile) {
                                     context
-                                        .read<ProfileProvider>()
+                                        .read<LikeProvider>()
                                         .deleteFeed(feedId: feedModel.feedId);
-                                    Navigator.pop(context);
-                                  }
 
-                                  Navigator.pop(context);
-                                } on CustomException catch (e) {
-                                  errorDialogWidget(context, e);
-                                }
-                              },
-                            ),
-                          );
-                        });
-                  },
-                  icon: Icon(Icons.more_vert),
-                )
-            ],
-          ),
+                                    if (widget.isProfile) {
+                                      context
+                                          .read<ProfileProvider>()
+                                          .deleteFeed(feedId: feedModel.feedId);
+                                      Navigator.pop(context);
+                                    }
+
+                                    Navigator.pop(context);
+                                  } on CustomException catch (e) {
+                                    errorDialogWidget(context, e);
+                                  }
+                                },
+                              ),
+                            );
+                          });
+                    },
+                    icon: Icon(Icons.more_vert),
+                  )
+              ],
+            ),
+          ]),
         ),
         _imageSliderWidget(feedModel.imageUrls),
         Padding(
@@ -224,7 +235,7 @@ class _FeedCardWidgetState extends State<FeedCardWidget> {
                             )
                           : Icon(
                               Icons.favorite_border,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                       isAnimating: isAnimating)),
               SizedBox(
@@ -247,7 +258,7 @@ class _FeedCardWidgetState extends State<FeedCardWidget> {
                 },
                 child: Icon(
                   Icons.comment_outlined,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(
